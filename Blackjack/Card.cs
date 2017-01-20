@@ -10,24 +10,28 @@ namespace Blackjack
     {
         private int value;
         public string name;
-        List<int> CardValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-        List<string> CardNames = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+        public string suit;
+        //List<int> CardValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        
+        
 
         public Card()
         {
 
         }
 
-        public Card(int _value, string _name)
+        public Card(string _name, string _suit, int _value)
         {
-            value = _value;
+     
             name = _name;
+            suit = _suit;
+            value = _value;
         }
         
 
-        public int GetValue()
+        public void GetValue()
         {
-            return value;
+            
         }
 
         public int setCardValue()

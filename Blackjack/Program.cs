@@ -10,6 +10,11 @@ namespace Blackjack
     {
         static void Main(string[] args)
         {
+            Deck.MakeDeck();
+            foreach (Card card in Deck.cards)
+            {
+                Console.WriteLine($"{card.name} of {card.suit}");
+            }
         }
     }
 }
