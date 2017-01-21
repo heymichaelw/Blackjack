@@ -28,6 +28,8 @@ namespace Blackjack
         };
         public static List<string> CardSuit = new List<string>() { "Spades", "Hearts", "Diamonds", "Clubs" };
         public static List<Card> cards = new List<Card>();
+        public static Random rng = new Random();
+
 
         public Deck()
         {
@@ -41,16 +43,29 @@ namespace Blackjack
             {
                 foreach (var ename in Enum.GetNames(typeof(CardNames)))
                 {
-                    string name = ename;
-                    int value = (int)((CardNames)Enum.Parse(typeof(CardNames), name));
-                    cards.Add(new Card(name, suit, value));
+                    
+                    int value = (int)((CardNames)Enum.Parse(typeof(CardNames), ename));
+                    cards.Add(new Card(ename, suit, value));
                 }
             }
 
+            int i = cards.Count;
+            while(i > 1)
+            {
+                i--;
+                int k = rng.Next(i + 1);
+                var value = cards[k];
+                cards[k] = cards[i];
+                cards[i] = value;
 
-            return cards;
+            }
+
+            return cards; 
             
+             
         }
+
+        
 
     }
 }
