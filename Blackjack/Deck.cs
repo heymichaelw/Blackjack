@@ -9,21 +9,21 @@ namespace Blackjack
     public class Deck
     {
         
-        public static List<string> CardNames = new List<string>()
+        enum CardNames
         {
-            "Two",
-            "Three",
-            "Four",
-            "Five",
-            "Six",
-            "Seven",
-            "Eight",
-            "Nine",
-            "Ten",
-            "Jack",
-            "Queen",
-            "King",
-            "Ace"
+            Two = 2,
+            Three, 
+            Four,
+            Five,
+            Six,
+            Seven,
+            Eight,
+            Nine,
+            Ten = 10,
+            Jack = 10,
+            Queen = 10,
+            King = 10,
+            Ace
 
         };
         public static List<string> CardSuit = new List<string>() { "Spades", "Hearts", "Diamonds", "Clubs" };
@@ -39,8 +39,9 @@ namespace Blackjack
         {
             foreach (string suit in CardSuit)
             {
-                foreach (string name in CardNames)
+                foreach (CardNames ename in Enum.GetValues(typeof(CardNames)))
                 {
+                    string name = ename.ToString();
                     cards.Add(new Card(name, suit));
                 }
             }

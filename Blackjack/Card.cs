@@ -20,12 +20,11 @@ namespace Blackjack
 
         }
 
-        public Card(string _name, string _suit, int _value)
+        public Card(string _name, string _suit)
         {
      
             name = _name;
             suit = _suit;
-            value = _value;
         }
         
 
