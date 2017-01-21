@@ -39,6 +39,9 @@ namespace Blackjack
 
         public static List<Card> MakeDeck()
         {
+
+            //creating the deck by iterating through suit and card names
+
             foreach (string suit in CardSuit)
             {
                 foreach (var ename in Enum.GetNames(typeof(CardNames)))
@@ -48,6 +51,8 @@ namespace Blackjack
                     cards.Add(new Card(ename, suit, value));
                 }
             }
+
+            //shuffling the newly made deck
 
             int i = cards.Count;
             while(i > 1)
@@ -63,6 +68,14 @@ namespace Blackjack
             return cards; 
             
              
+        }
+
+        public static Card DealCard()
+        {
+            int r0 = rng.Next(0, (cards.Count) - 1);
+            Card chosenCard = cards[r0];
+            cards.RemoveAt(r0);
+            return chosenCard;
         }
 
         
