@@ -42,7 +42,8 @@ namespace Blackjack
                 foreach (CardNames ename in Enum.GetValues(typeof(CardNames)))
                 {
                     string name = ename.ToString();
-                    cards.Add(new Card(name, suit));
+                    int value = (int)((CardNames)Enum.Parse(typeof(CardNames), name));
+                    cards.Add(new Card(name, suit, value));
                 }
             }
 

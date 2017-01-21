@@ -13,7 +13,7 @@ namespace Blackjack
             Deck.MakeDeck();
             foreach (Card card in Deck.cards)
             {
-                Console.WriteLine($"{card.name} of {card.suit}");
+                Console.WriteLine($"{card.name} of {card.suit} : {card.value}");
             }
         }
     }

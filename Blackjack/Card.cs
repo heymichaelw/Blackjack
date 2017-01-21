@@ -8,7 +8,7 @@ namespace Blackjack
 {
     public class Card
     {
-        private int value;
+        public int value;
         public string name;
         public string suit;
         //List<int> CardValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
@@ -20,11 +20,12 @@ namespace Blackjack
 
         }
 
-        public Card(string _name, string _suit)
+        public Card(string _name, string _suit, int _value)
         {
      
             name = _name;
             suit = _suit;
+            value = _value;
         }
         
 
