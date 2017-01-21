@@ -39,9 +39,9 @@ namespace Blackjack
         {
             foreach (string suit in CardSuit)
             {
-                foreach (CardNames ename in Enum.GetValues(typeof(CardNames)))
+                foreach (var ename in Enum.GetNames(typeof(CardNames)))
                 {
-                    string name = ename.ToString();
+                    string name = ename;
                     int value = (int)((CardNames)Enum.Parse(typeof(CardNames), name));
                     cards.Add(new Card(name, suit, value));
                 }
