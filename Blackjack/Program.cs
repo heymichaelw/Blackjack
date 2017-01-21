@@ -12,33 +12,7 @@ namespace Blackjack
         {
             Deck.MakeDeck();
             Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            Deck.DealCard();
-            foreach (Card card in Deck.cards)
+            foreach (Card card in Player.hand)
             {
                 Console.WriteLine($"{card.name} of {card.suit} : {card.value}");
             }
