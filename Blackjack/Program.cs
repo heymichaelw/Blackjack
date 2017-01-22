@@ -14,6 +14,8 @@ namespace Blackjack
             Deck.DealCard();
             Deck.DealCard();
             Player.GetHand();
+            Deck.DealCard();
+            Player.GetHand();
             //foreach (Card card in Player.hand)
             //{
             //   Console.WriteLine($"{card.name} of {card.suit} : {card.value}");
