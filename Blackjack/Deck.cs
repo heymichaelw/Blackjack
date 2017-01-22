@@ -71,7 +71,7 @@ namespace Blackjack
         }
 
         public static List<Card> DealCard()
-        {
+        {   
             int r0 = rng.Next(0, (cards.Count) - 1);
             Card chosenCard = cards[r0];
             cards.RemoveAt(r0);
