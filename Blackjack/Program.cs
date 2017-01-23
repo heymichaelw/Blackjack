@@ -8,17 +8,23 @@ namespace Blackjack
 {
     public class Program
     {
+        public static bool isActive;
+        public static bool isPlaying;
 
         static void Main(string[] args)
         {
             Deck.MakeDeck();
             Deck.DealCard();
             Deck.DealCard();
+            Player.CheckTwoCards();
             Console.WriteLine("Welcome to the game of Blackjack!");
             Console.WriteLine("The dealer's first card is:");
             Player.GetFirstDealerCard();
             Console.WriteLine("Your hand is:");
-            Player.GetHand();
+            while (isPlaying ==true)
+            {
+                Game();
+            }
         }
 
         public static void Game()
@@ -34,7 +40,9 @@ namespace Blackjack
             else
             {
                 Player.DealerDraw();
+                isActive = false;
             }
+            Player.CheckState();
 
             
 

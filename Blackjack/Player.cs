@@ -12,9 +12,11 @@ namespace Blackjack
         public static List<Card> dealerhand = new List<Card>();
         public static List<int> handValue = new List<int>();
         public static List<int> dealerhandvalue = new List<int>();
-        public static int dealervalue;
-        public static int handvalue;
+        public static int dealervalue = dealerhandvalue.Sum();
+        public static int handvalue = handValue.Sum();
         public static Random rng = new Random();
+        public static bool isPlaying;
+        public static bool isActive;
 
         public Player()
         {
@@ -31,10 +33,13 @@ namespace Blackjack
                 handValue.Add(card.value);
             }
 
+            handvalue = handValue.Sum();
+            return handvalue;
+
             //checking if hand contains an ace
             if (handValue.Contains(11))
             {
-                foreach (Card card in Player.playerhand)
+               foreach (Card card in Player.playerhand)
                 {
                     Console.WriteLine($"{card.name} of {card.suit}");
                 }
@@ -50,7 +55,7 @@ namespace Blackjack
                     handvalue = handValue.Sum();
                     return handvalue;
                 }
-
+            
             }
             else
             {
@@ -66,14 +71,19 @@ namespace Blackjack
             {
                 Console.WriteLine($"{card.name} of {card.suit}");
             }
-            Console.WriteLine($"Value : {handvalue}");
-            if(handvalue == 21)
-            {
+            Console.WriteLine($"Value : {handvalue}"); 
+        }
 
+        public static void CheckTwoCards()
+        {
+            if (handvalue == 21)
+            {
+                Console.WriteLine("Congratulations!  You got Blackjack!");
             }
         }
 
-        public static void GetDealerValue()
+
+        public static int GetDealerValue()
         {
             dealerhandvalue.Clear();
             foreach(Card card in Player.dealerhand)
@@ -86,6 +96,16 @@ namespace Blackjack
                 deal = deal - 10;
             }
             Console.WriteLine($"Dealer Hand : {deal}");
+            return deal;
+        }
+
+        public static void GetDealerHand()
+        {
+            GetDealerValue();
+            foreach (Card card in Player.dealerhand)
+            {
+                Console.WriteLine($"{card.name} of {card.suit}");
+            }
         }
 
         public static void GetFirstDealerCard()
@@ -108,7 +128,38 @@ namespace Blackjack
             Deck.cards.RemoveAt(r0);
             Player.playerhand.Add(chosenCard);
         }
-
+        
+        public static void CheckState()
+        {
+            if(handvalue == 21)
+            {
+                Console.WriteLine("Blackjack!  You win!");
+                isPlaying = false;
+            }
+            else if (handvalue > 21)
+            {
+                Console.WriteLine("Bust!  You lose!");
+                isPlaying = false;
+            }
+            else if (dealervalue == 21)
+            {
+                Console.WriteLine("The dealer got Blackjack!  You lose!");
+                isPlaying = false;
+            }
+            else if (dealervalue > 21)
+            {
+                Console.WriteLine("The dealer busted!  You win!");
+                isPlaying = false;
+            }
+            else if (isActive = false && handvalue > dealervalue)
+            {
+                Console.WriteLine("You scored higher than the dealer!  You win!");
+            }
+            else
+            {
+                Console.WriteLine("The dealer scored higher.  You lose!");
+            }
+        }
 
     }
 }
