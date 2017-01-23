@@ -70,13 +70,17 @@ namespace Blackjack
              
         }
 
-        public static List<Card> DealCard()
+        public static void DealCard()
         {   
             int r0 = rng.Next(0, (cards.Count) - 1);
             Card chosenCard = cards[r0];
             cards.RemoveAt(r0);
-            Player.hand.Add(chosenCard);
-            return Player.hand;
+            Player.playerhand.Add(chosenCard);
+
+            int r1 = rng.Next(0, (cards.Count) - 1);
+            Card dealerCard = cards[r1];
+            cards.RemoveAt(r1);
+            Player.dealerhand.Add(dealerCard);
         }
 
         
